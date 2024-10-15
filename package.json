@@ -1,0 +1,29 @@
+{
+  "name": "anusandhan",
+  "module": "src/server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "hono": "^3.1.5",
+    "marked": "^5.0.2",
+    "googleapis": "^118.0.0",
+    "yaml": "^2.2.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

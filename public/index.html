@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bun Markdown Processor</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Welcome to Bun Markdown Processor</h1>
+    <button id="processBtn">Process Google Drive</button>
+    <div id="status"></div>
+    <script>
+        document.getElementById('processBtn').addEventListener('click', async () => {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = 'Processing...';
+            try {
+                const response = await fetch('/api/process', { method: 'POST' });
+                if (response.ok) {
+                    const result = await response.json();
+                    statusDiv.textContent = result.message;
+                } else {
+                    throw new Error('Failed to process');
+                }
+            } catch (error) {
+                statusDiv.textContent = 'Error processing Google Drive folders';
+            }
+        });
+    </script>
+</body>
+</html>

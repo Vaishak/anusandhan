@@ -1,0 +1,32 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin - Process Files</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <h1>Admin - Process Files</h1>
+        <button id="processButton">Process Files</button>
+        <p id="status"></p>
+        <script>
+            document.getElementById('processButton').addEventListener('click', async () => {
+                const status = document.getElementById('status');
+                status.textContent = 'Processing...';
+                try {
+                    const response = await fetch('/api/process', { method: 'POST' });
+                    if (response.ok) {
+                        status.textContent = 'Processing complete!';
+                    } else {
+                        status.textContent = 'Error processing files.';
+                    }
+                } catch (error) {
+                    status.textContent = 'Error: ' + error.message;
+                }
+            });
+        </script>
+    </body>
+    </html>
+  

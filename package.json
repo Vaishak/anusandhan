@@ -18,9 +18,10 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "googleapis": "^118.0.0",
     "hono": "^3.1.5",
     "marked": "^5.0.2",
-    "googleapis": "^118.0.0",
     "yaml": "^2.2.1"
   },
   "peerDependencies": {

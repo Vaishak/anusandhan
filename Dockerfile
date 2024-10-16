@@ -1,12 +1,16 @@
 FROM oven/bun:1
 
-   WORKDIR /app
+WORKDIR /app
 
-   COPY package.json bun.lockb ./
-   RUN bun install --frozen-lockfile
+# Copy package.json
+COPY package.json ./
 
-   COPY . .
+# Install dependencies
+RUN bun install
 
-   EXPOSE 3000
+# Copy the rest of the application code
+COPY . .
 
-   CMD ["bun", "run", "src/server.ts"]
+EXPOSE 3000
+
+CMD ["bun", "run", "src/server.ts"]

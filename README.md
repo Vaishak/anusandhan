@@ -1,49 +1,64 @@
-Bun Markdown Processor
+# Google Drive Markdown Processor
+
 This project is a web application built with Bun and Hono that processes Markdown files from Google Drive and serves them as HTML pages.
-Features
 
-Fetches Markdown files from specified Google Drive folders
-Converts Markdown to HTML
-Serves static files and generated HTML pages
-Provides an API endpoint to trigger processing
+## Features
 
-Prerequisites
+- Fetches Markdown files from a specified Google Drive folder
+- Converts Markdown to HTML
+- Serves static files and generated HTML pages
+- Provides an index page for all processed files
+- Includes an admin page for manual processing
 
-Bun installed on your system
-Google Drive API credentials
+## Prerequisites
 
-Installation
+- [Bun](https://bun.sh/) installed on your system
+- Google Cloud project with Drive API enabled
+- Google Cloud service account with access to the target Drive folder
 
-Clone the repository:
-Copygit clone https://github.com/yourusername/bun-markdown-processor.git
-cd bun-markdown-processor
+## Installation
 
-Install dependencies:
-Copybun install
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/google-drive-markdown-processor.git
+   cd google-drive-markdown-processor
+   ```
 
-Set up your Google Drive API credentials (see Configuration section)
-Create a config.yaml file with your Google Drive folder IDs
+2. Install dependencies:
+   ```
+   bun install
+   ```
 
-Configuration
+3. Set up your Google Cloud service account key (see Configuration section)
 
-Obtain Google Drive API credentials and save the JSON file as credentials.json in the project root.
-Create a config.yaml file in the project root with your Google Drive folder IDs:
-yamlCopyfolders:
-  - id: "your_google_drive_folder_id_1"
-    template: "default"
-  - id: "your_google_drive_folder_id_2"
-    template: "custom"
+## Configuration
 
+1. Obtain a Google Cloud service account key and save it as `your-service-account-key.json` in the project root.
 
-Usage
+2. Create a `.env` file in the project root with the following content:
+   ```
+   GOOGLE_APPLICATION_CREDENTIALS=your-service-account-key.json
+   ```
 
-Start the server:
-Copybun run src/server.ts
+3. Update the `config.ts` file with your Google Drive folder ID and other settings.
 
-Open a web browser and navigate to http://localhost:3000
-Click the "Process Google Drive" button to fetch and process Markdown files
+## Usage
 
-Development
-This project uses TypeScript. Make sure to run bun run typecheck before committing to ensure type safety.
-License
+1. Start the server:
+   ```
+   bun run src/server.ts
+   ```
+
+2. Open a web browser and navigate to `http://localhost:3000`
+
+3. View the index page to see all processed Markdown files
+
+4. Access the admin page at `http://localhost:3000/admin` to manually trigger processing
+
+## Development
+
+This project uses TypeScript. Make sure to run `bun run typecheck` before committing to ensure type safety.
+
+## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
